@@ -1,0 +1,4 @@
+hello.taher.pw {
+  tls internal
+  reverse_proxy api:3000
+}
