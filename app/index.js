@@ -1,10 +1,13 @@
 import express from 'express';
 
 const app = express();
+app.set('trust proxy', true)
+
 const port = 3000;
 
 app.get('/', (req, res) => {
-	res.send('hello')
+	var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 
+	res.send({ip})
 });
 
 app.listen(port, () => {

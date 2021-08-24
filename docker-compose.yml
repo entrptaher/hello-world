@@ -15,7 +15,6 @@ services:
     ports:
       - 80:80/tcp
       - 443:443/tcp
-    network_mode: host
 
 volumes:
   caddy_data:
