@@ -1,6 +1,33 @@
+# hello.taher.pw {
+#   tls internal
+#   handle_path /api {
+# 	  reverse_proxy api:3000 {
+#       header_up X-Real-IP {remote_host}
+#     }
+#   }
+# }
+
 hello.taher.pw {
   tls internal
-  reverse_proxy api:3000 {
-    header_up X-Real-IP {remote_host}
+  handle_path /api {
+	  reverse_proxy api:3001 {
+      header_up X-Real-IP {remote_host}
+    }
+  }
+
+  handle_path /* {
+	  reverse_proxy web:5000
   }
 }
+
+# :80 {
+#   handle_path /api {
+# 	  reverse_proxy api:3001 {
+#       header_up X-Real-IP {remote_host}
+#     }
+#   }
+
+#   handle_path /* {
+# 	  reverse_proxy web:5000
+#   }
+# }

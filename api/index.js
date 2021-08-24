@@ -3,9 +3,9 @@ import express from 'express';
 const app = express();
 app.set('trust proxy', true)
 
-const port = 3000;
+const port = 3001;
 
-app.get('/', (req, res) => {
+app.get(['/', '/api'], (req, res) => {
 	var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 
 	res.send({ip})
 });
